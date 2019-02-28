@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-md-10 offset-md-1 articles">
+            <div class="text-right">
+                <a href="/">
+                    <button class="btn btn-success">Home</button>
+                </a>
+            </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                {{#each comment}}
+                <h2>{{headline}}</h2>
+                <img src={{image}} class="articleImg">
+                <h4>By:{{byline}}</h4>
+                <p>{{summary}}</p>
+                <hr>
+                <h3 class="text-center">Comments</h3>
+            </div>
+        </div>
+        {{#if comments}} {{#each comments}}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3 commentBox">
+                            <p>
+                                <strong>Comment by:</strong>
+                                {{author}}
+                            </p>
+                            <hr>
+                            <p>
+                                <strong>Comment title:</strong>
+                                {{title}}
+                            </p>
+                            <hr>
+                                <div class="text-center">
+                                    <strong>Comment:</strong>
+                                    </div>
+                            <p>{{comment}}</p>
+                        {{!-- </div> --}}
+                    </div>
+                </div>
+                <hr> {{/each}} {{/if}}
+                <div class="input-group-sm mb-3 text-center">
+                    <form id="addComment" method="POST" action="/addComment/{{_id}}">
+                        <h3>Add your own comment:</h3>
+                        <input type="hidden" value={{_id}}>
+                        <label for="title">Title:</label>
+                        <input name="title" type="text" placeholder="Title" class="form-control">
+                        <br>
+                        <label for="author">Name:</label>
+                        <input name="author" type="text" placeholder="Name" class="form-control">
+                        <br>
+                        <label for="comment">Comment:</label>
+                        <textarea name="comment" cols="30" rows="10" class="form-control"></textarea>
+                        <br>
+                        <input type="submit" class="btn btn-primary" />
+                    </form>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,114 @@
+body { background-image: url(../images/background.jpeg);
+     }
+.main-container{
+  background-color: rgba(255, 255, 255, 0.753);
+  margin: 0px 100px 0px 100px;
+}
+#wrapper {
+        width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 5%;
+      }
+#articles {
+        display: inline-block;
+        overflow: auto;
+        width: 60%;
+        height: 700px;
+      }
+#notes {
+        float: right;
+        width: 30%;
+      }
+textarea, input {
+        display: block;
+        width: 100%;
+        background-color: #FCF5C7;
+      }
+input {
+        height: 36px;
+        font-size: 24px;
+      }
+textarea {
+        height: 200px;
+        font-size: 18px;
+      }
+
+h1{
+  background-color: rgba(218, 230, 113, 0.836);
+  text-align: center;
+  font-weight: bolder;
+  font-size: 40px;
+  padding: 40px;
+}
+
+/*************************************************************/
+html, body{
+  min-height: 100%;
+}
+
+
+/* .parralax{
+   background-image: url("../images/background.png");
+   min-height: 90vh;
+   background-attachment: fixed;
+   background-position: center center;
+   background-repeat: no-repeat;
+   background-size: cover;
+} */
+.push{
+   height: 80px;
+}
+
+#banner{
+   background-color: white;
+   border-radius: 10px;
+   box-shadow: 5px 5px 5px #292928;
+}
+/* 
+#logo{
+   width: 850px;
+   display: block;
+} */
+
+.footer{
+   margin-top: 30px;
+   margin-left: auto;
+   margin-right: auto;
+   width: 949px;
+   height: 60px;
+   line-height: 30px;
+   border-radius: 10px;
+   background-color: white;
+   /* position: absolute;
+   bottom: 0;
+   left: 25%; */
+}
+
+.footerText{ 
+   margin-bottom: 0;
+}
+.articles{
+   background-color: white;
+   border-radius: 10px;
+   box-shadow: 5px 5px 5px #292928;
+   margin-top: 20px;
+   margin-bottom: 30px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   min-height: 100%;
+}
+
+.articleImg{
+   width: 100%;
+   height: 200px;
+}
+
+.storyCard{
+   margin-top: 10px;
+}
+
+.commentBox{
+   border: 1px solid darkgray;
+}
+
