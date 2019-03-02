@@ -25,7 +25,65 @@ router.get("/scrape", function (req, res) {
                 .find("td").find(".category").children("a").attr("href");
            
             result.summary = $(this)
-                .find("td").find("");
+                .find("td").text();
+
+            dummyArray.push(result);
+        db.Article.create(result)
+            .then(function(newArticle){
+                
+            }).catch(function(err){
+                console.log("Couldn't create new articles");
+            })
+        });
+        res.redirect("/");
+    });
+    axios.get("https://moderndogmagazine.com/articles?page=1").then(function (response) {
+        var $ = cheerio.load(response.data);
+        var dummyArray = [];
+        $("tr").each(function(i, element){
+            var result= {};
+            // var url = "https://moderndogmagazine.com";
+            result.site = "Dog's Articles";
+            result.url = $(this)
+                .find("td").find("span").children("a").attr("href");
+            result.image = $(this)
+                .find("td").find("a").children("img").attr("src");
+            result.headline = $(this)
+                .find("td").children("h2").text().trim();
+            result.byline = $(this)
+                .find("td").find(".category").children("a").attr("href");
+           
+            result.summary = $(this)
+                .find("td").text();
+
+            dummyArray.push(result);
+        db.Article.create(result)
+            .then(function(newArticle){
+                
+            }).catch(function(err){
+                console.log("Couldn't create new articles");
+            })
+        });
+        res.redirect("/");
+    });
+    axios.get("https://moderndogmagazine.com/articles?page=2").then(function (response) {
+        var $ = cheerio.load(response.data);
+        var dummyArray = [];
+        $("tr").each(function(i, element){
+            var result= {};
+            // var url = "https://moderndogmagazine.com";
+            result.site = "Dog's Articles";
+            result.url = $(this)
+                .find("td").find("span").children("a").attr("href");
+            result.image = $(this)
+                .find("td").find("a").children("img").attr("src");
+            result.headline = $(this)
+                .find("td").children("h2").text().trim();
+            result.byline = $(this)
+                .find("td").find(".category").children("a").attr("href");
+           
+            result.summary = $(this)
+                .find("td").text();
 
             dummyArray.push(result);
         db.Article.create(result)
