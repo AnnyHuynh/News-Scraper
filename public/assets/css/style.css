@@ -47,15 +47,6 @@ html, body{
   min-height: 100%;
 }
 
-
-/* .parralax{
-   background-image: url("../images/background.png");
-   min-height: 90vh;
-   background-attachment: fixed;
-   background-position: center center;
-   background-repeat: no-repeat;
-   background-size: cover;
-} */
 .push{
    height: 80px;
 }
@@ -65,11 +56,7 @@ html, body{
    border-radius: 10px;
    box-shadow: 5px 5px 5px #292928;
 }
-/* 
-#logo{
-   width: 850px;
-   display: block;
-} */
+
 
 .footer{
    margin-top: 30px;
@@ -80,9 +67,7 @@ html, body{
    line-height: 30px;
    border-radius: 10px;
    background-color: white;
-   /* position: absolute;
-   bottom: 0;
-   left: 25%; */
+
 }
 
 .footerText{ 

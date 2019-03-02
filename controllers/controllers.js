@@ -6,8 +6,6 @@ const axios = require("axios");
 const db = require("../models");
 const phantom = require("phantom");
 
-
-//dnd beyond scraper and filter
 router.get("/scrape", function (req, res) {
     console.log("scrape hit");
     axios.get("https://moderndogmagazine.com/articles").then(function (response) {
@@ -20,15 +18,15 @@ router.get("/scrape", function (req, res) {
             result.url = $(this)
                 .find("td").find("span").children("a").attr("href");
             result.image = $(this)
-                .find("td").find("a").children("img");
+                .find("td").find("a").children("img").attr("src");
             result.headline = $(this)
                 .find("td").children("h2").text().trim();
             result.byline = $(this)
-                .find("td").find("div").find("a").find("href");
+                .find("td").find(".category").children("a").attr("href");
+           
             result.summary = $(this)
-                .find("td").children("views-field-nothing");
-           // result.published = $(this)
-            //     .children().find(".post-excerpt__published").children("time").children("abbr").text();
+                .find("td").find("");
+
             dummyArray.push(result);
         db.Article.create(result)
             .then(function(newArticle){
@@ -41,7 +39,6 @@ router.get("/scrape", function (req, res) {
     });
 });
 
-//dnd beyond filter
 router.get("/view", function(req, res){
      db.Article.find({ site: "Dog's Articles"}, function(err, docs){
          if (err){console.log(err)};
@@ -52,48 +49,6 @@ router.get("/view", function(req, res){
      });
  })
 
-//dnd wizard scraper
-// router.get("/wotcscrape", function(req, res){
-//     console.log("wotc scrape hit");
-//     axios.get("http://dnd.wizards.com/articles").then(function (response) {
-//         var $ = cheerio.load(response.data);
-//         var dummyArray = [];
-//         $(".article-preview").each(function(i, element){
-//             var result = {};
-//             var url = "http://dnd.wizards.com";
-
-//             result.site = "Wizards";
-//             result.url = url + $(this)
-//                 .find(".actions").children("a").attr("href");
-//             result.image = $(this)
-//                 .find(".image").children("img").attr("src");
-//             result.headline = $(this)
-//                 .find(".text").children("h4").children("a").text().trim();
-//             result.summary = $(this)
-//                 .find(".summary").children("p").text().trim();
-//             result.published = $(this)
-//                 .find(".category").children("a").text().trim();
-//         db.Article.create(result)
-//             .then(function(newArticle){
-//                 console.log("new articles created");
-//             });
-//         });
-//     });
-//     res.redirect("/");
-//     });
-
-// // wizards filter
-// router.get("/wizards", function(req, res){
-//     db.Article.find({ site: "Wizards"}, function(err, docs){
-//         if (err){console.log(err)};
-//         let wizInfo = {
-//             posts: docs
-//         };
-//         res.render("index", wizInfo);
-//     });
-// })
-
-// main page / all articles
 router.get("/", function(req, res){
     console.log("index hit");
     db.Article.find({}, function(err, docs){
